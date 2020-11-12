@@ -1,0 +1,9 @@
+.album-card p{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    margin: 0;
+    padding: 3px;
+    border-bottom-right-radius: 5px;
+    background: rgb(51, 47, 47);
+}

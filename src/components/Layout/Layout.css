@@ -1,0 +1,32 @@
+.main-header {
+    background: rgb(20, 49, 173);
+    background: linear-gradient(214deg, rgba(20, 49, 173, 1) 7%, rgba(208, 27, 231, 1) 64%);
+    padding: 20px;
+    border: 1px solid black;
+    border-top: none;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.logo-box {
+    display: flex;
+    align-items: center;
+}
+
+.main-header a {
+    text-decoration: none;
+    color: white;
+}
+
+#logo {
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.logo-title {
+    display: inline-block;
+    color: white;
+    margin: 0 20px;
+    text-decoration: none;
+}

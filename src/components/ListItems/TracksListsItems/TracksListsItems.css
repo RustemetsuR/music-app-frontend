@@ -1,0 +1,33 @@
+.track-card {
+    width: 40%;
+    height: 150px;
+    margin: 10px;
+    padding: 25px 0;
+    border: 2px solid black;
+    text-align: center;
+    border-radius: 5px;
+    position: relative;
+	background: linear-gradient(225deg, rgba(20, 49, 173, 1) 5%, rgba(208, 27, 231, 1) 80%);
+}
+
+.track-card h2 {
+    margin: 0px 0;
+}
+
+.track-card .tracks-duration {
+    margin: 10px 0;
+}
+
+.track-info-box{
+    padding: 50px;
+}
+
+.track-card .tracks-number{
+    position: absolute;
+    margin: 0;
+    top: 0;
+    left: 0;
+    background: rgb(51, 47, 47);
+    padding: 5px;
+    border-bottom-right-radius: 3px;
+}
