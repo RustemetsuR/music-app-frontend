@@ -1,0 +1,13 @@
+.albums-box{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    flex-wrap: wrap;
+}
+
+.artist-name{
+    border: 1px solid white;
+    border-radius: 5px;
+    text-align: center;
+    padding: 25px;
+}
