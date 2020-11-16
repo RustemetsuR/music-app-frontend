@@ -1,0 +1,7 @@
+.track-history-list-item{
+    border: 1px solid white;
+    width: 50%;
+    margin: 10px auto 0;
+    padding: 25px;
+    border-radius: 5px;
+}
