@@ -23,7 +23,7 @@ const TrackHistory = props => {
             <h2>History</h2>
             {trackHistory &&
 
-                <div>
+                <div className='track-history-list'>
                     {trackHistory.map(th => {
                         return <TrackHistoryListItems key={th.id} track={th.name} artist={th.artist} duration={th.duration} />
                     })}

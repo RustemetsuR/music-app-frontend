@@ -6,3 +6,8 @@
 .track-history-box h2{
     margin-bottom: 50px;
 }
+
+.track-history-list{
+    display: flex;
+    flex-direction: column-reverse; 
+}
