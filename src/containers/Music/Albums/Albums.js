@@ -14,7 +14,7 @@ const Albums = props => {
 
     useEffect(() => {
         dispatch(fetchGetAlbums(props.match.params.artistAlbums));
-    }, [dispatch]);
+    }, [dispatch, props.match.params.artistAlbums]);
 
     const getToTracks = id => {
         props.history.replace('/music/' + props.match.params.artistAlbums + '/' + id);
