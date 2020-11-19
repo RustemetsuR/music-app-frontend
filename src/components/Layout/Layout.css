@@ -46,5 +46,16 @@
 }
 
 .users-menu a{
-    margin: 0 10px;
+    margin: 0;
+    margin-left: 10px;
+}
+
+.users-menu h4{
+    text-align: end;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.fa-user{
+    margin-right: 10px;
 }
