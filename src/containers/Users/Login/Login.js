@@ -31,7 +31,7 @@ const Login = props => {
             password: passwordValue,
         };
         dispatch(login(data));
-        if(error == null){
+        if(error === null){
             props.history.replace('/music');
         };
     };

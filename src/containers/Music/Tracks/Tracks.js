@@ -16,20 +16,20 @@ const Tracks = props => {
 
     useEffect(() => {
         dispatch(fetchGetTracks(props.match.params.albumTracks));
-    }, [dispatch]);
+    }, [dispatch,props.match.params.albumTracks]);
 
     const addToHistory = (token, track, user) => {
         dispatch(addToTrackHistory(token, track, user));
     };
 
     const tracksList = tracks.map(track => {
-        if(user){
+        if(user.length !== 0){
             return <TracksListsItems
             key={track._id}
             duration={track.duration}
             name={track.name}
             number={track.number}
-            clicked={() => addToHistory(user.user.token, track._id, user)} />
+            clicked={() => addToHistory(user.token, track._id, user)} />
         }else{
             return <TracksListsItems
             key={track._id}
