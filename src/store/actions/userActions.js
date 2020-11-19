@@ -1,5 +1,5 @@
 import axiosApi from "../../axiosApi";
-import { ADD_TRACK_HISTORY_FAILURE, ADD_TRACK_HISTORY_SUCCESS, CHANGE_PASSWORD_INPUT_VALUE, CHANGE_PASSWORD_LOGIN_INPUT_VALUE, CHANGE_USERNAME_INPUT_VALUE, CHANGE_USERNAME_LOGIN_INPUT_VALUE, GET_TRACK_HISTORY_FAILURE, GET_TRACK_HISTORY_SUCCESS, LOGIN_FAILURE, LOGIN_SUCCESS, REGISTER_FAILURE, REGISTER_SUCCESS } from "../actionTypes"
+import { ADD_TRACK_HISTORY_FAILURE, ADD_TRACK_HISTORY_SUCCESS, CHANGE_PASSWORD_INPUT_VALUE, CHANGE_PASSWORD_LOGIN_INPUT_VALUE, CHANGE_USERNAME_INPUT_VALUE, CHANGE_USERNAME_LOGIN_INPUT_VALUE, GET_TRACK_HISTORY_FAILURE, GET_TRACK_HISTORY_SUCCESS, LOGIN_FAILURE, LOGIN_SUCCESS, LOGOUT_USER, REGISTER_FAILURE, REGISTER_SUCCESS } from "../actionTypes"
 
 export const passwordValueOnChange = value => {
     return { type: CHANGE_PASSWORD_INPUT_VALUE, value };
@@ -54,6 +54,7 @@ export const addToTrackHistory = (token, trackID, user) => {
         return async dispatch => {
             const data = {
                 track: trackID,
+                dateTime: new Date().toISOString(),
             };
             const headers = {
                 'Authorization': token,
@@ -83,12 +84,12 @@ export const getHistory = (token) => {
                     artist: album.data.artist.name,
                     duration: track.data.duration,
                     name: track.data.name,
+                    dateTime: r.dateTime,
                     id: r._id,
                 };
                 history.push(data);
             });
             dispatch(getHistorySuccess(history));
-
         } catch (e) {
             dispatch(getHistoryFailure(e.response))
         }
@@ -115,4 +116,15 @@ export const login = userData => {
             dispatch(userLoginFailure(error.response.data));
         };
     };
+};
+
+export const logoutUser = () =>{
+    return async (dispatch, getState) =>{
+        const token = getState().user.user.token;
+        const headers = {
+            'Authorization': token,
+        };
+        await axiosApi.delete("/users/sessions", {headers});
+        dispatch({type: LOGOUT_USER});
+    } 
 };
