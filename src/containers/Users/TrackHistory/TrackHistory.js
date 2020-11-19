@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import TrackHistoryListItems from '../../../components/ListItems/TrackHistoryListItems/TrackHistoryListItems';
+import Spinner from '../../../components/Spinner/Spinner';
 import { getHistory } from '../../../store/actions/userActions';
 import './TrackHistory.css';
 
@@ -11,25 +12,25 @@ const TrackHistory = props => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (user === null) {
-            props.history.push('/music');
-        } else if (trackHistory === null) {
-            dispatch(getHistory(user.user.token));
-        };
-    }, [dispatch, user, props.history, trackHistory])
+        if (user.length === 0) {
+            return props.history.push('/music');
+        }
+        console.log('asd1');
+        dispatch(getHistory(user.token));
+        console.log('asd2');
+    }, [dispatch, props.history, user.length, user.token]);
 
     return (
         <div className='track-history-box'>
             <h2>History</h2>
-            {trackHistory &&
-
+            { trackHistory ?
                 <div className='track-history-list'>
                     {trackHistory.map(th => {
-                        return <TrackHistoryListItems key={th.id} track={th.name} artist={th.artist} duration={th.duration} />
+                        console.log(th)
+                        return <TrackHistoryListItems key={th.id} track={th.name} artist={th.artist} duration={th.duration} dateTime={th.dateTime} />
                     })}
                 </div>
-
-            }
+                : <Spinner />}
         </div>
     );
 };
