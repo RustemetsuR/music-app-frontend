@@ -15,9 +15,7 @@ const TrackHistory = props => {
         if (user.length === 0) {
             return props.history.push('/music');
         }
-        console.log('asd1');
         dispatch(getHistory(user.token));
-        console.log('asd2');
     }, [dispatch, props.history, user.length, user.token]);
 
     return (
