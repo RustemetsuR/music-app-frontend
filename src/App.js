@@ -1,6 +1,6 @@
 
 import './App.css';
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import Artists from './containers/Music/MainPage/Artists/Artists';
 import Container from './components/Container/Container';
 import Albums from './containers/Music/Albums/Albums';
@@ -16,6 +16,7 @@ const App = () => {
       <Switch>
         <Container>
           <Layout>
+            <Redirect from='/' to='/music'/>
             <Route path='/user/login' component={Login}/>
             <Route path='/user/register/' component={Register} />
             <Route exact path='/music/:artistAlbums' component={Albums} />
