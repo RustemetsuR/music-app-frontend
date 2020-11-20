@@ -1,18 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { passwordValueOnChange, register, userValueOnChange } from '../../../store/actions/userActions';
 import './Register.css';
 import '../Login/Login.css';
 
-const Register = props => {
+const Register = () => {
     const dispatch = useDispatch();
     const userNameValue = useSelector(state => state.user.userNameValue);
     const passwordValue = useSelector(state => state.user.passwordValue);
-    const error = useSelector(state => state.user.error);
-
-    useEffect(() => {
-
-    }, [dispatch]);
 
      const userNameOnChange = event =>{
          const value = event.target.value;
@@ -31,9 +26,6 @@ const Register = props => {
             password: passwordValue,
         };
         dispatch(register(data));
-        if(error != null){
-            props.history.replace('/music');
-        };
     };
 
     return (
