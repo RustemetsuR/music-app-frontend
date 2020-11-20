@@ -1,22 +1,6 @@
 import { push } from "connected-react-router";
 import axiosApi from "../../axiosApi";
-import { ADD_TRACK_HISTORY_FAILURE, ADD_TRACK_HISTORY_SUCCESS, CHANGE_PASSWORD_INPUT_VALUE, CHANGE_PASSWORD_LOGIN_INPUT_VALUE, CHANGE_USERNAME_INPUT_VALUE, CHANGE_USERNAME_LOGIN_INPUT_VALUE, GET_TRACK_HISTORY_FAILURE, GET_TRACK_HISTORY_SUCCESS, LOGIN_FAILURE, LOGIN_SUCCESS, LOGOUT_USER, REGISTER_FAILURE, REGISTER_SUCCESS } from "../actionTypes"
-
-export const passwordValueOnChange = value => {
-    return { type: CHANGE_PASSWORD_INPUT_VALUE, value };
-};
-
-export const userValueOnChange = value => {
-    return { type: CHANGE_USERNAME_INPUT_VALUE, value };
-};
-
-export const usernameLoginValueOnChange = value => {
-    return { type: CHANGE_USERNAME_LOGIN_INPUT_VALUE, value };
-};
-
-export const passwordLoginValueOnChange = value => {
-    return { type: CHANGE_PASSWORD_LOGIN_INPUT_VALUE, value };
-};
+import { ADD_TRACK_HISTORY_FAILURE, ADD_TRACK_HISTORY_SUCCESS, GET_TRACK_HISTORY_FAILURE, GET_TRACK_HISTORY_SUCCESS, LOGIN_FAILURE, LOGIN_SUCCESS, LOGOUT_USER, REGISTER_FAILURE, REGISTER_SUCCESS } from "../actionTypes"
 
 const userRegisterSuccess = value => {
     return { type: REGISTER_SUCCESS, value };
