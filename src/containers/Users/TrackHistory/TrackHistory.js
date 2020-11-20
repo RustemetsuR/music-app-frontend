@@ -15,8 +15,10 @@ const TrackHistory = props => {
         if (user.length === 0) {
             return props.history.push('/music');
         }
-        dispatch(getHistory(user.token));
-    }, [dispatch, props.history, user.length, user.token]);
+        if (trackHistory === undefined) {
+            dispatch(getHistory(user.token));
+        }
+    }, [props.history, user.length, user.token]);
 
     return (
         <div className='track-history-box'>
@@ -24,7 +26,6 @@ const TrackHistory = props => {
             { trackHistory ?
                 <div className='track-history-list'>
                     {trackHistory.map(th => {
-                        console.log(th)
                         return <TrackHistoryListItems key={th.id} track={th.name} artist={th.artist} duration={th.duration} dateTime={th.dateTime} />
                     })}
                 </div>
