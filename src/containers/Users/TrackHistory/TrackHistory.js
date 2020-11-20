@@ -5,20 +5,14 @@ import Spinner from '../../../components/Spinner/Spinner';
 import { getHistory } from '../../../store/actions/userActions';
 import './TrackHistory.css';
 
-const TrackHistory = props => {
-    const user = useSelector(state => state.user.user);
+const TrackHistory = () => {
     const trackHistory = useSelector(state => state.user.trackHistory);
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (user.length === 0) {
-            return props.history.push('/music');
-        };
-        if (trackHistory === undefined) {
-            dispatch(getHistory(user.token));
-        };
-    }, [dispatch, props.history, user.length, user.token, trackHistory]);
+        dispatch(getHistory());
+    }, [dispatch]);
 
     return (
         <div className='track-history-box'>
@@ -26,7 +20,12 @@ const TrackHistory = props => {
             { trackHistory ?
                 <div className='track-history-list'>
                     {trackHistory.map(th => {
-                        return <TrackHistoryListItems key={th.id} track={th.name} artist={th.artist} duration={th.duration} dateTime={th.dateTime} />
+                        return <TrackHistoryListItems
+                            key={th._id}
+                            track={th.track.name}
+                            artist={th.track.album.artist.name}
+                            duration={th.duration}
+                            dateTime={th.dateTime} />
                     })}
                 </div>
                 : <Spinner />}
