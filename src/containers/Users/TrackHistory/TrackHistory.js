@@ -14,11 +14,11 @@ const TrackHistory = props => {
     useEffect(() => {
         if (user.length === 0) {
             return props.history.push('/music');
-        }
+        };
         if (trackHistory === undefined) {
             dispatch(getHistory(user.token));
-        }
-    }, [props.history, user.length, user.token]);
+        };
+    }, [dispatch, props.history, user.length, user.token, trackHistory]);
 
     return (
         <div className='track-history-box'>
