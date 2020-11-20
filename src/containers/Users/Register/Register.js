@@ -1,29 +1,36 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { passwordValueOnChange, register, userValueOnChange } from '../../../store/actions/userActions';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { register } from '../../../store/actions/userActions';
 import './Register.css';
 import '../Login/Login.css';
 
 const Register = () => {
     const dispatch = useDispatch();
-    const userNameValue = useSelector(state => state.user.userNameValue);
-    const passwordValue = useSelector(state => state.user.passwordValue);
+
+    const [registerData, setRegisterData] = useState({
+        userName: '',
+        password: '',
+    });
 
      const userNameOnChange = event =>{
          const value = event.target.value;
-         dispatch(userValueOnChange(value));
+         const registerDataCopy = {...registerData, userName: value}
+         setRegisterData(registerDataCopy);
+         console.log(registerData);
      };
 
      const passwordOnChange = event =>{
         const value = event.target.value;
-        dispatch(passwordValueOnChange(value));
+        const registerDataCopy = {...registerData, password: value}
+        setRegisterData(registerDataCopy);
+        console.log(registerData);
     };
 
     const registerSubmit = event =>{
        event.preventDefault();
         const data = {
-            username: userNameValue,
-            password: passwordValue,
+            username: registerData.userName,
+            password: registerData.password,
         };
         dispatch(register(data));
     };
@@ -33,8 +40,8 @@ const Register = () => {
             <h2>Create your account</h2> 
             <div>
                 <form onSubmit={registerSubmit}>
-                    <input placeholder='Username' onChange={userNameOnChange} value={userNameValue} required/>
-                    <input placeholder='Password' type='password' onChange={passwordOnChange} value={passwordValue} required/>
+                    <input placeholder='Username' onChange={userNameOnChange} value={registerData.userName} required/>
+                    <input placeholder='Password' type='password' onChange={passwordOnChange} value={registerData.password} required/>
                     <button type='submit'>Sign Up</button>
                 </form>
             </div>
