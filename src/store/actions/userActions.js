@@ -1,3 +1,4 @@
+import { push } from "connected-react-router";
 import axiosApi from "../../axiosApi";
 import { ADD_TRACK_HISTORY_FAILURE, ADD_TRACK_HISTORY_SUCCESS, CHANGE_PASSWORD_INPUT_VALUE, CHANGE_PASSWORD_LOGIN_INPUT_VALUE, CHANGE_USERNAME_INPUT_VALUE, CHANGE_USERNAME_LOGIN_INPUT_VALUE, GET_TRACK_HISTORY_FAILURE, GET_TRACK_HISTORY_SUCCESS, LOGIN_FAILURE, LOGIN_SUCCESS, LOGOUT_USER, REGISTER_FAILURE, REGISTER_SUCCESS } from "../actionTypes"
 
@@ -101,6 +102,7 @@ export const register = userData => {
         try {
             const response = await axiosApi.post('/users', userData);
             dispatch(userRegisterSuccess(response.data));
+            dispatch(push('/music'));
         } catch (error) {
             dispatch(userRegisterFailure(error.response.data));
         };
@@ -112,7 +114,9 @@ export const login = userData => {
         try {
             const response = await axiosApi.post('/users/sessions', userData);
             dispatch(userLoginSuccess(response.data));
+            dispatch(push('/music'));
         } catch (error) {
+            console.log(error)
             dispatch(userLoginFailure(error.response.data));
         };
     };
