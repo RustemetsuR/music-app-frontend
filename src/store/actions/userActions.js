@@ -54,32 +54,22 @@ export const addToTrackHistory = (token, trackID, user) => {
     }
 };
 
-export const getHistory = (token) => {
-    return async dispatch => {
+export const getHistory = () => {
+    return async (dispatch, getState) => {
         const headers = {
-            'Authorization': token,
+            'Authorization': getState().user.user && getState().user.user.token
         };
-        const history = [];
+        if (!getState().user.user) {
+            return dispatch(push('/login'));
+        };
         try {
             const response = await axiosApi.get("/trackHistory", { headers });
-            response.data.map(async r => {
-                const track = await axiosApi.get("/tracks/" + r.track);
-                const album = await axiosApi.get("/albums/" + track.data.album);
-                const data = {
-                    artist: album.data.artist.name,
-                    duration: track.data.duration,
-                    name: track.data.name,
-                    dateTime: r.dateTime,
-                    id: r._id,
-                };
-                history.push(data);
-            });
-            dispatch(getHistorySuccess(history));
+            dispatch(getHistorySuccess(response.data));
         } catch (e) {
             dispatch(getHistoryFailure(e.response))
-        }
-    }
-}
+        };
+    };
+};
 
 export const register = userData => {
     return async dispatch => {
@@ -106,13 +96,13 @@ export const login = userData => {
     };
 };
 
-export const logoutUser = () =>{
-    return async (dispatch, getState) =>{
+export const logoutUser = () => {
+    return async (dispatch, getState) => {
         const token = getState().user.user.token;
         const headers = {
             'Authorization': token,
         };
-        await axiosApi.delete("/users/sessions", {headers});
-        dispatch({type: LOGOUT_USER});
-    } 
+        await axiosApi.delete("/users/sessions", { headers });
+        dispatch({ type: LOGOUT_USER });
+    }
 };
