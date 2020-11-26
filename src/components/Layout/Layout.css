@@ -11,6 +11,7 @@
 .header-content{
     display: flex;
     align-items: center;
+    justify-content: space-between;
     position: relative;
 }
 
@@ -39,10 +40,6 @@
 
 .users-menu{
     display: block;
-    position: absolute;
-    top: 50%;
-    right: 5%;
-    transform: translate(-50%,-50%);
 }
 
 .users-menu a{

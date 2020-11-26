@@ -13,7 +13,7 @@ const Layout = props => {
     const user = useSelector(state => state.user.user);
     const dispatch = useDispatch();
 
-    const logout = () =>{
+    const logout = () => {
         dispatch(logoutUser());
     };
     return (
@@ -34,6 +34,11 @@ const Layout = props => {
                             </> :
                             <>
                                 <h4><FontAwesomeIcon icon={faUser} />Hello , {user.username}!</h4>
+                                {user.length !== 0 && <>
+                                    <NavLink to='/addArtist'>Add Artist</NavLink>
+                                    <NavLink to='/addAlbum'>Add Album</NavLink>
+                                    <NavLink to='/addTrack'>Add Track</NavLink>
+                                </>}
                                 <NavLink to='/trackHistory'>Track History</NavLink>
                                 <NavLink to='/music' onClick={logout}>Log Out</NavLink>
                             </>}
