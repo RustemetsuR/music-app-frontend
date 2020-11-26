@@ -16,14 +16,12 @@ const Register = () => {
          const value = event.target.value;
          const registerDataCopy = {...registerData, userName: value}
          setRegisterData(registerDataCopy);
-         console.log(registerData);
      };
 
      const passwordOnChange = event =>{
         const value = event.target.value;
         const registerDataCopy = {...registerData, password: value}
         setRegisterData(registerDataCopy);
-        console.log(registerData);
     };
 
     const registerSubmit = event =>{
