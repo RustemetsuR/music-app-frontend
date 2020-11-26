@@ -39,11 +39,19 @@ export const changeAlbumTitle = value => {
 };
 
 export const fetchGetArtists = () => {
-    return async dispatch => {
+    return async (dispatch, getState) => {
         dispatch(request());
         try {
-            const response = await axiosApi.get('/artists');
-            dispatch(getArtists(response.data));
+            if (getState().user.user.role !== 'admin') {
+                const response = await axiosApi.get('/artists');
+                dispatch(getArtists(response.data));
+            } else if (getState().user.user.role === 'admin') {
+                const headers = {
+                    'Authorization': getState().user.user && getState().user.user.token
+                };
+                const response = await axiosApi.get('/unpublishedItems/artists', { headers });
+                dispatch(getArtists(response.data));
+            };
         } catch (e) {
             dispatch(getArtistsError(e));
         };
@@ -51,14 +59,23 @@ export const fetchGetArtists = () => {
 };
 
 export const fetchGetAlbums = artistID => {
-    return async dispatch => {
+    return async (dispatch, getState) => {
         dispatch(request());
         try {
-            const response = await axiosApi.get('/albums?artist=' + artistID);
-            const responseName = await axiosApi.get('/artists/' + artistID);
-            dispatch(getAlbums(response.data));
-            dispatch(changeArtistTitle(responseName.data.name))
-
+            if (getState().user.user.role !== 'admin') {
+                const response = await axiosApi.get('/albums?artist=' + artistID);
+                const responseName = await axiosApi.get('/artists/' + artistID);
+                dispatch(getAlbums(response.data));
+                dispatch(changeArtistTitle(responseName.data.name));
+            } else if (getState().user.user.role === 'admin') {
+                const headers = {
+                    'Authorization': getState().user.user && getState().user.user.token
+                };
+                const response = await axiosApi.get('/unpublishedItems/albums?artist=' + artistID, { headers });
+                const responseName = await axiosApi.get('/unpublishedItems/artists/' + artistID, { headers });
+                dispatch(getAlbums(response.data));
+                dispatch(changeArtistTitle(responseName.data.name));
+            };
         } catch (e) {
             dispatch(getAlbumsError(e));
         };
@@ -66,14 +83,25 @@ export const fetchGetAlbums = artistID => {
 };
 
 export const fetchGetTracks = albumID => {
-    return async dispatch => {
+    return async (dispatch,getState) => {
         dispatch(request());
         try {
-            const response = await axiosApi.get('/tracks?album=' + albumID);
-            const responseName = await axiosApi.get('/albums/' + albumID)
-            dispatch(getTracks(response.data));
-            dispatch(changeArtistTitle(responseName.data.artist.name));
-            dispatch(changeAlbumTitle(responseName.data.name));
+            if (getState().user.user.role !== 'admin') {
+                const response = await axiosApi.get('/tracks?album=' + albumID);
+                const responseName = await axiosApi.get('/albums/' + albumID)
+                dispatch(getTracks(response.data));
+                dispatch(changeArtistTitle(responseName.data.artist.name));
+                dispatch(changeAlbumTitle(responseName.data.name));
+            } else if (getState().user.user.role === 'admin') {
+                const headers = {
+                    'Authorization': getState().user.user && getState().user.user.token
+                };
+                const response = await axiosApi.get('/unpublishedItems/tracks?album=' + albumID, {headers});
+                const responseName = await axiosApi.get('/unpublishedItems/albums/' + albumID, {headers})
+                dispatch(getTracks(response.data));
+                dispatch(changeArtistTitle(responseName.data.artist.name));
+                dispatch(changeAlbumTitle(responseName.data.name));
+            }
         } catch (e) {
             dispatch(getTracksError(e));
         };
