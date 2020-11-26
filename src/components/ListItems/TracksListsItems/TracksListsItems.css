@@ -20,7 +20,9 @@
 
 .track-info-box{
     padding: 50px;
+    cursor: pointer;
 }
+
 
 .track-card .tracks-number{
     position: absolute;
