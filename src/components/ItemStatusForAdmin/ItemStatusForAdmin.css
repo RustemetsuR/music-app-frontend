@@ -1,0 +1,30 @@
+.status-text{
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+.published-text{
+	background: rgb(119, 177, 32);
+}
+
+.unpublished-text{
+	background: rgb(87, 86, 86);
+}
+
+.btn{
+	color: white;
+	border: 1px solid white;
+	padding: 5px;
+	cursor: pointer;
+}
+
+.delete-button{
+	background: rgb(146, 10, 10);
+}
+
+.publish-button{
+	background: rgb(7, 88, 7);
+}
