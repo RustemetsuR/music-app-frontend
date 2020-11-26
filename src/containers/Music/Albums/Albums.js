@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
+import { push } from "connected-react-router";
 import { useDispatch, useSelector } from 'react-redux';
 import AlbumsListItems from '../../../components/ListItems/AlbumsListItems/AlbumsListItems';
 import Spinner from '../../../components/Spinner/Spinner';
 import { fetchGetAlbums } from '../../../store/actions/musicActions';
 import './Albums.css';
+import { deleteAlbum, publishAlbum } from '../../../store/actions/adminActions';
 
 const Albums = props => {
 
@@ -17,7 +19,15 @@ const Albums = props => {
     }, [dispatch, props.match.params.artistAlbums]);
 
     const getToTracks = id => {
-        props.history.replace('/music/' + props.match.params.artistAlbums + '/' + id);
+        dispatch(push('/music/' + props.match.params.artistAlbums + '/' + id));
+    };
+
+    const deleteItem = id => {
+        dispatch(deleteAlbum(id));
+    };
+
+    const publishItem = id => {
+        dispatch(publishAlbum(id));
     };
 
     return (
@@ -33,7 +43,10 @@ const Albums = props => {
                             name={album.name}
                             image={image}
                             yearOfIssue={album.yearOfIssue}
-                            clicked={() => getToTracks(album._id)} />
+                            clicked={() => getToTracks(album._id)}
+                            status={album.published}
+                            delete={() => deleteItem(album._id)}
+                            publish={() => publishItem(album._id)} />
                     })}
                 </div>}
         </div>
