@@ -1,0 +1,33 @@
+.form-box{
+    margin: 0 auto;
+    text-align: center;
+    border: 1px solid white;
+    border-radius: 5px;
+    width: 50%;
+    margin-top: 50px;
+    padding: 20px 0;
+}
+
+.add-artist-inputs{
+    display: block;
+    width: 80%;
+    margin: 20px auto;
+    background: none;
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.add-artist-inputs::placeholder{
+    color: white;
+}
+
+.add-artist-button{
+    padding: 5px;
+    border: 1px solid white;
+    border-radius: 5px;
+    background: none;
+    color: white;
+}
+

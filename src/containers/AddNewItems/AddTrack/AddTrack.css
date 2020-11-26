@@ -1,0 +1,18 @@
+.add-track-inputs{
+    margin: 10px auto;
+    display: block;
+    width: 80%;
+    border: 1px solid white;
+    background: none;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.add-track-inputs::placeholder{
+    color: white;
+}
+
+.track-album-input option{
+    color: black;
+}

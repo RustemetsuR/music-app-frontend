@@ -1,0 +1,18 @@
+.add-album-inputs{
+    margin: 10px auto;
+    display: block;
+    width: 80%;
+    padding: 5px;
+    border-radius: 5px;
+    background: none;
+    color: white;
+    border: 1px solid white;
+}
+
+.add-album-inputs::placeholder{
+    color: white;
+}
+
+.album-artist-input option{
+    color: black;
+}
