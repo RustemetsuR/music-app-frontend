@@ -114,7 +114,6 @@ export const login = userData => {
             dispatch(userLoginSuccess(response.data));
             dispatch(push('/music'));
         } catch (error) {
-            console.log(error)
             dispatch(userLoginFailure(error.response.data));
         };
     };
@@ -161,7 +160,7 @@ export const fetchAddAlbum = data => {
                 dispatch(addAlbum());
                 dispatch(push("/music"));
             } catch (e) {
-                dispatch(addAlbum(e));
+                dispatch(addAlbumFailure(e));
             };
         };
     };
@@ -181,6 +180,18 @@ export const fetchAddTrack = data => {
             } catch (e) {
                 dispatch(addTrackFailure(e.response.data));
             };
+        };
+    };
+};
+
+export const facebookLogin = data => {
+    return async dispatch => {
+        try {
+            const response = axiosApi.post("/users/facebookLogin", data);
+            console.log(response)
+            dispatch(userLoginSuccess(response));
+        } catch (e) {
+            dispatch(userLoginFailure(e.response.data));
         };
     };
 };

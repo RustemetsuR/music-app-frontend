@@ -24,7 +24,7 @@ const getUnpublishedItemsFailure = error => {
 };
 
 const publishArtistSuccess = () => {
-    return { type: CHANGE_ARTIST_TO_PUBLISHED_SUCCESS };
+    return { type: CHANGE_ARTIST_TO_PUBLISHED_SUCCESS};
 };
 
 const publishArtistFailure = error => {

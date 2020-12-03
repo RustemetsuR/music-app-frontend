@@ -2,7 +2,7 @@ import axiosApi from "../../axiosApi";
 
 const { GET_ARTISTS_SUCCESS, GET_ARTISTS_FAILURE, GET_ALBUMS_SUCCESS, GET_ALBUMS_FAILURE, GET_TRACK_SUCCESS, GET_TRACK_FAILURE, CHANGE_ARTIST_NAME_TITLE, CHANGE_ALBUM_NAME_TITLE, REQUEST, } = require("../actionTypes")
 
-const getArtists = value => {
+export const getArtists = value => {
     return { type: GET_ARTISTS_SUCCESS, value };
 };
 
@@ -10,7 +10,7 @@ const getArtistsError = error => {
     return { type: GET_ARTISTS_FAILURE, error };
 };
 
-const getAlbums = value => {
+export const getAlbums = value => {
     return { type: GET_ALBUMS_SUCCESS, value };
 };
 
@@ -18,7 +18,7 @@ const getAlbumsError = error => {
     return { type: GET_ALBUMS_FAILURE, error };
 };
 
-const getTracks = value => {
+export const getTracks = value => {
     return { type: GET_TRACK_SUCCESS, value };
 };
 

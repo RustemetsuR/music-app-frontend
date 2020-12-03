@@ -11,7 +11,8 @@ const {
     DELETE_ALBUM_SUCCESS,
     DELETE_ALBUM_FAILURE,
     DELETE_TRACK_SUCCESS,
-    DELETE_TRACK_FAILURE } = require("../actionTypes");
+    DELETE_TRACK_FAILURE, 
+    CHANGE_ARTIST_TO_PUBLISHED_SUCCESS} = require("../actionTypes");
 
 const initialState = {
     unpublishedItems: [],
@@ -24,8 +25,8 @@ const adminReducer = (state = initialState, action) => {
             return { ...state, unpublishedItems: action.value, error: null };
         case GET_UNPUBLISHED_ITEMS_FAILURE:
             return { ...state, error: action.error };
-        case CHANGE_ARTIST_TO_PUBLISHED_FAILURE:
-            return { ...state, error: null };
+        case CHANGE_ARTIST_TO_PUBLISHED_SUCCESS:
+            return { ...state, error: null ,};
         case CHANGE_ARTIST_TO_PUBLISHED_FAILURE:
             return { ...state, error: action.error };
         case CHANGE_ALBUM_TO_PUBLISHED_SUCCESS:
