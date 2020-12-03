@@ -1,12 +1,12 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlayCircle } from '@fortawesome/free-regular-svg-icons';
-import { faUser } from '@fortawesome/free-regular-svg-icons';
 import './Layout.css';
 import { NavLink } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from '../../store/actions/userActions';
+import noAvatar from '../../assets/images/no-avatar-image.png';
 
 
 const Layout = props => {
@@ -33,7 +33,12 @@ const Layout = props => {
                                 <NavLink to='/user/login'>Sign In</NavLink>
                             </> :
                             <>
-                                <h4><FontAwesomeIcon icon={faUser} />Hello , {user.username}!</h4>
+                                <div className='mini-info-profile-box'>
+                                    {user.avatarImage ? <img className='avatar-image' src={user.avatarImage} alt={user.displayName} /> :
+                                        <img className='avatar-image' src={noAvatar} alt={user.displayName} />}
+
+                                    <h4>Hello , {user.displayName}!</h4>
+                                </div>
                                 {user.length !== 0 && <>
                                     <NavLink to='/addArtist'>Add Artist</NavLink>
                                     <NavLink to='/addAlbum'>Add Album</NavLink>
