@@ -82,7 +82,7 @@ const AddAlbum = props => {
                         type='file'
                         onChange={changeImage}
                         required />
-                    <button className='add-artist-button' type='submit'>Add Artist</button>
+                    <button className='add-artist-button' type='submit'>Add Album</button>
                 </form>
             </div>
         </div>
