@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import FacebookLogin from '../../../components/FacebookLogin/FacebookLogin';
 import { login } from '../../../store/actions/userActions';
 import './Login.css';
 
@@ -47,6 +48,7 @@ const Login = () => {
                 <input onChange={passwordOnChange} placeholder='Password' type='password' required value={loginData.password} />
                 <button type='submit'>Login</button>
             </form>
+            <FacebookLogin/>
         </div>
     );
 };
