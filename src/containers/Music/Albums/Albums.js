@@ -24,10 +24,12 @@ const Albums = props => {
 
     const deleteItem = id => {
         dispatch(deleteAlbum(id));
+        window.location.reload();
     };
 
     const publishItem = id => {
         dispatch(publishAlbum(id));
+        window.location.reload();
     };
 
     return (

@@ -25,10 +25,12 @@ const Tracks = props => {
 
     const deleteItem = id => {
         dispatch(deleteTrack(id));
+        window.location.reload();
     };
 
     const publishItem = id => {
         dispatch(publishTrack(id));
+        window.location.reload();
     };
 
     const tracksList = tracks.map(track => {

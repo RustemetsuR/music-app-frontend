@@ -3,7 +3,7 @@ import { push } from "connected-react-router";
 import { useDispatch, useSelector } from 'react-redux';
 import ArtistsListItem from '../../../../components/ListItems/ArtistsListItem/ArtistsListItem';
 import Spinner from '../../../../components/Spinner/Spinner';
-import { fetchGetArtists } from '../../../../store/actions/musicActions';
+import { fetchGetArtists, getArtists } from '../../../../store/actions/musicActions';
 import './Artists.css';
 import { deleteArtist, publishArtist } from '../../../../store/actions/adminActions';
 
@@ -17,8 +17,7 @@ const Artists = () => {
 
     useEffect(() => {
         dispatch(fetchGetArtists());
-        console.log(user.token)
-    }, [dispatch, user]);
+    }, [user, dispatch]);
 
     const getToAlbums = (id) => {
         dispatch(push("/music/" + id));
@@ -26,10 +25,12 @@ const Artists = () => {
 
     const deleteItem = id => {
         dispatch(deleteArtist(id));
+        window.location.reload();
     };
 
     const publishItem = id => {
         dispatch(publishArtist(id));
+        window.location.reload();
     };
     return (
         <div>
