@@ -12,6 +12,7 @@ import Register from './containers/Users/Register/Register';
 import AddArtist from './containers/AddNewItems/AddArtist/AddArtist';
 import AddAlbum from './containers/AddNewItems/AddAlbum/AddAlbum';
 import AddTrack from './containers/AddNewItems/AddTrack/AddTrack';
+import RedirectToHome from './components/RedirectToHome/RedirectToHome';
 
 const App = () => {
   return (
@@ -19,12 +20,13 @@ const App = () => {
       <Switch>
         <Container>
           <Layout>
+            <Route exact path='/' component={RedirectToHome}/>
             <Route exact path='/music' component={Artists} />
-            <Route path='/user/login' component={Login}/>
+            <Route path='/user/login' component={Login} />
             <Route path='/user/register/' component={Register} />
-            <Route path='/addArtist' component={AddArtist}/>
-            <Route path='/addAlbum' component={AddAlbum}/>
-            <Route path='/addTrack' component={AddTrack}/>
+            <Route path='/addArtist' component={AddArtist} />
+            <Route path='/addAlbum' component={AddAlbum} />
+            <Route path='/addTrack' component={AddTrack} />
             <Route exact path='/music/:artistAlbums' component={Albums} />
             <Route path='/music/:artistAlbums/:albumTracks' component={Tracks} />
             <Route path='/trackHistory' component={TrackHistory} />
