@@ -9,7 +9,7 @@ const Register = () => {
     const dispatch = useDispatch();
 
     const [registerData, setRegisterData] = useState({
-        userName: '',
+        username: '',
         password: '',
         image: '',
         displayName: '',
@@ -23,7 +23,7 @@ const Register = () => {
             ...registerData,
             [name]: value,
         };
-        console.log(registerData)
+        
         setRegisterData(data);
     }
     
@@ -32,13 +32,13 @@ const Register = () => {
         let data;
         if (registerData.image === '') {
             data = {
-                username: registerData.userName,
+                username: registerData.username,
                 password: registerData.password,
                 displayName: registerData.displayName,
             };
         }else{
             data = {
-                username: registerData.userName,
+                username: registerData.username,
                 password: registerData.password,
                 displayName: registerData.displayName,
                 image: registerData.image
@@ -53,7 +53,7 @@ const Register = () => {
             <h2>Create your account</h2>
             <div>
                 <form onSubmit={registerSubmit}>
-                    <input placeholder='Username' name='userName' onChange={dataOnChange} value={registerData.userName} required />
+                    <input placeholder='Username' name='userName' onChange={dataOnChange} value={registerData.username} required />
                     <input placeholder='Password' name='password' type='password' onChange={dataOnChange} value={registerData.password} required />
                     <input placeholder='Image' name='image' onChange={dataOnChange} value={registerData.image} />
                     <input placeholder='Display Name' name='displayName' onChange={dataOnChange} value={registerData.displayName} />
