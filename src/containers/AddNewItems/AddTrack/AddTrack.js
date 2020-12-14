@@ -23,7 +23,7 @@ const AddTrack = props => {
             props.history.replace("/music");
         };
         dispatch(fetchGetAlbums(''));
-    }, [dispatch, props.history, user.length]);
+    }, [dispatch]);
 
     const changeData = event => {
         const value = event.target.value;
@@ -32,17 +32,18 @@ const AddTrack = props => {
             ...data,
             [name]: value,
         };
-        console.log(data);
         setData(dataCopy);
     };
 
     const addAlbum = event => {
         event.preventDefault();
+        if(data.album === ''){
+            data.album = albums[0]._id;
+        }
         const dataCopy = {
             ...data,
             number: parseInt(data.number)
         };
-        console.log(dataCopy)
         dispatch(fetchAddTrack(dataCopy));
     };
 
@@ -54,6 +55,7 @@ const AddTrack = props => {
                     <input
                         className='album-name-input add-track-inputs'
                         name='name'
+                        id='name'
                         placeholder='Name'
                         onChange={changeData}
                         value={data.name}
@@ -62,6 +64,7 @@ const AddTrack = props => {
                         type='number'
                         className='track-number-input add-track-inputs'
                         name='number'
+                        id='number'
                         placeholder='Number'
                         onChange={changeData}
                         value={data.number}
@@ -69,6 +72,7 @@ const AddTrack = props => {
                     <input
                         className='track-duration-input add-track-inputs'
                         name='duration'
+                        id='duration'
                         placeholder='Duration'
                         onChange={changeData}
                         value={data.duration}
@@ -78,7 +82,7 @@ const AddTrack = props => {
                             return <option key={a._id} value={a._id}>{a.name}</option>
                         }) : null}
                     </select>
-                    <button className='add-album-button' type='submit'>Add Track</button>
+                    <button id='addTrack-btn' className='add-album-button' type='submit'>Add Track</button>
                 </form>
             </div>
         </div>

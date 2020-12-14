@@ -28,7 +28,6 @@ const AddArtist = props => {
             [name]: value,
         };
         setData(dataCopy);
-        console.log(data);
     };
 
     const changeImage = event => {
@@ -51,6 +50,7 @@ const AddArtist = props => {
                     <input
                         className='artist-name-input add-artist-inputs'
                         name='name'
+                        id='name'
                         placeholder='Name'
                         onChange={changeData}
                         value={data.name}
@@ -58,6 +58,7 @@ const AddArtist = props => {
                     <input
                         className='artist-description-input add-artist-inputs'
                         name='description'
+                        id='description'
                         placeholder='Description'
                         onChange={changeData}
                         value={data.description}
@@ -66,8 +67,8 @@ const AddArtist = props => {
                         className='artist-image-input add-artist-inputs'
                         type='file'
                         onChange={changeImage}
-                        required />
-                    <button className='add-artist-button' type='submit'>Add Artist</button>
+                        />
+                    <button id='addArtist-btn' className='add-artist-button' type='submit'>Add Artist</button>
                 </form>
             </div>
         </div>

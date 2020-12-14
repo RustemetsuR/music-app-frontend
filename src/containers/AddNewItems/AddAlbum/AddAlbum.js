@@ -22,7 +22,7 @@ const AddAlbum = props => {
             props.history.replace("/music");
         };
         dispatch(fetchGetArtists());
-    }, [dispatch, artists,props.history, user.length]);
+    }, [dispatch]);
 
     const changeData = event => {
         const value = event.target.value;
@@ -32,7 +32,6 @@ const AddAlbum = props => {
             [name]: value,
         };
         setData(dataCopy);
-        console.log(data);
     };
 
     const changeImage = event => {
@@ -59,6 +58,7 @@ const AddAlbum = props => {
                     <input
                         className='album-name-input add-album-inputs'
                         name='name'
+                        id='name'
                         placeholder='Name'
                         onChange={changeData}
                         value={data.name}
@@ -66,6 +66,7 @@ const AddAlbum = props => {
                     <input
                         type='number'
                         min='1800'
+                        id='year'
                         className='album-year-input add-album-inputs'
                         name='yearOfIssue'
                         placeholder='Year'
@@ -81,8 +82,8 @@ const AddAlbum = props => {
                         className='album-image-input add-album-inputs'
                         type='file'
                         onChange={changeImage}
-                        required />
-                    <button className='add-artist-button' type='submit'>Add Album</button>
+                        />
+                    <button id='addAlbum-btn' className='add-artist-button' type='submit'>Add Album</button>
                 </form>
             </div>
         </div>
