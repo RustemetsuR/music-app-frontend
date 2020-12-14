@@ -66,7 +66,6 @@ const Tracks = props => {
                 <Spinner /> :
                 <div className='tracks-box'>
                    {tracksList}
-
                 </div>}
         </div>
     );

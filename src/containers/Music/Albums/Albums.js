@@ -6,6 +6,8 @@ import Spinner from '../../../components/Spinner/Spinner';
 import { fetchGetAlbums } from '../../../store/actions/musicActions';
 import './Albums.css';
 import { deleteAlbum, publishAlbum } from '../../../store/actions/adminActions';
+import { apiURL } from '../../../constants';
+import noImage from '../../../assets/images/no-image.jpg';
 
 const Albums = props => {
 
@@ -39,7 +41,10 @@ const Albums = props => {
                 <Spinner /> :
                 <div className='albums-box'>
                     {albums.map(album => {
-                        const image = 'http://localhost:8000/uploads/' + album.image;
+                         let image = apiURL + '/uploads/' + album.image
+                         if(album.image === ''){
+                             image = noImage;
+                         }
                         return <AlbumsListItems
                             key={album._id}
                             name={album.name}

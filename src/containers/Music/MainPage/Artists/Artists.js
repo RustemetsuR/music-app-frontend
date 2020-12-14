@@ -3,9 +3,11 @@ import { push } from "connected-react-router";
 import { useDispatch, useSelector } from 'react-redux';
 import ArtistsListItem from '../../../../components/ListItems/ArtistsListItem/ArtistsListItem';
 import Spinner from '../../../../components/Spinner/Spinner';
-import { fetchGetArtists, getArtists } from '../../../../store/actions/musicActions';
+import { fetchGetArtists } from '../../../../store/actions/musicActions';
 import './Artists.css';
 import { deleteArtist, publishArtist } from '../../../../store/actions/adminActions';
+import noArtist from '../../../../assets/images/no-artist.png';
+import { apiURL } from '../../../../constants';
 
 const Artists = () => {
 
@@ -38,7 +40,10 @@ const Artists = () => {
                 <Spinner /> :
                 <div className='artists-box'>
                     {artists.map(a => {
-                        const image = 'http://localhost:8000/uploads/' + a.image
+                        let image = apiURL + '/uploads/' + a.image
+                        if(a.image === ''){
+                            image = noArtist;
+                        }
                         return <ArtistsListItem
                             key={a._id}
                             image={image}
