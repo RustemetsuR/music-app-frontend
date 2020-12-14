@@ -3,10 +3,9 @@ import ItemStatusForAdmin from '../../ItemStatusForAdmin/ItemStatusForAdmin';
 import './TracksListsItems.css';
 
 const TracksListsItems = props => {
-    
     return (
         <div className='track-card'>
-            <div className='track-info-box' onClick={props.clicked}>
+            <div className='track-info-box test-card' onClick={props.clicked}>
                 <h2>{props.name}</h2>
                 <p className='tracks-duration'>{props.duration}</p>
             </div>
